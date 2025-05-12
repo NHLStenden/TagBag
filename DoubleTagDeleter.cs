@@ -1,15 +1,27 @@
-public static class DoubleTagDeleter
+namespace NhlStenden.TagBag;
+
+/// <summary>
+/// Represents a class that deletes duplicate tags from files.
+/// </summary>
+public class DoubleTagDeleter : TagBase
 {
+    /// <summary>
+    /// Executes the tag deletion process on the specified files.
+    /// </summary>
+    /// <param name="args">A list of arguments where the first argument is the directory path.</param>
     public static void Execute(IList<string> args)
     {
-        var fileNames = Directory.GetFiles(args[0], "*.txt", SearchOption.AllDirectories);
-        if (fileNames.Length == 0)
-            fileNames = Directory.GetFiles(args[0], "*.npz", SearchOption.AllDirectories);
+        var fileNames = GetTagFiles(args[0]);
         foreach (var fileName in fileNames)
         {
             ProcessFile(fileName);
         }
     }
+
+    /// <summary>
+    /// Processes the specified file to remove duplicate tags.
+    /// </summary>
+    /// <param name="fileName">The name of the file to process.</param>
     static void ProcessFile(string fileName)
     {
         var lines = File.ReadAllLines(fileName).ToList();

@@ -1,10 +1,18 @@
-public static class TagCounter
+
+namespace NhlStenden.TagBag;
+
+/// <summary>
+/// Represents a class that counts the occurrences of tags in files.
+/// </summary>
+public class TagCounter : TagBase
 {
+    /// <summary>
+    /// Executes the tag counting process on the specified files.
+    /// </summary>
+    /// <param name="args">A list of arguments where the first argument is the directory path.</param>
     public static void Execute(IList<string> args)
     {
-        var fileNames = Directory.GetFiles(args[0], "*.txt", SearchOption.AllDirectories);
-        if (fileNames.Length == 0)
-            fileNames = Directory.GetFiles(args[0], "*.npz", SearchOption.AllDirectories);
+        var fileNames = GetTagFiles(args[0]);
         var tokens = new Dictionary<string, int>();
         CountTagsInFiles(fileNames, tokens);
 
@@ -12,12 +20,22 @@ public static class TagCounter
             Console.WriteLine(token.Key + ": " + token.Value);
     }
 
+    /// <summary>
+    /// Counts the tags in the specified files and updates the token dictionary.
+    /// </summary>
+    /// <param name="fileNames">An array of file names to process.</param>
+    /// <param name="tokens">A dictionary to store the count of each tag.</param>
     static void CountTagsInFiles(string[] fileNames, Dictionary<string, int> tokens)
     {
         foreach (var fileName in fileNames)
             CountTagsInFile(fileName, tokens);
     }
 
+    /// <summary>
+    /// Counts the tags in the specified file and updates the token dictionary.
+    /// </summary>
+    /// <param name="fileName">The name of the file to process.</param>
+    /// <param name="tokens">A dictionary to store the count of each tag.</param>
     static void CountTagsInFile(string fileName, IDictionary<string, int> tokens)
     {
         var lines = File.ReadAllLines(fileName).ToList();

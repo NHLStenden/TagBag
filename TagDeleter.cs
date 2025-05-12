@@ -1,10 +1,17 @@
-public static class TagDeleter
+namespace NhlStenden.TagBag;
+
+/// <summary>
+/// Represents a class that deletes specified tags from files.
+/// </summary>
+public class TagDeleter : TagBase
 {
+    /// <summary>
+    /// Executes the tag deletion process on the specified files.
+    /// </summary>
+    /// <param name="args">A list of arguments where the first argument is the directory path and the second argument is the file containing tags to remove.</param>
     public static void Execute(IList<string> args)
     {
-        var fileNames = Directory.GetFiles(args[0], "*.txt", SearchOption.AllDirectories);
-        if (fileNames.Length == 0)
-            fileNames = Directory.GetFiles(args[0], "*.npz", SearchOption.AllDirectories);
+        var fileNames = GetTagFiles(args[0]);
         var removeWordsFileName = args.Count >= 2 ? args[1] : "";
         var removeWords = !string.IsNullOrEmpty(removeWordsFileName) ? File.ReadAllLines(removeWordsFileName).ToList() : new List<string>();
 
@@ -12,6 +19,11 @@ public static class TagDeleter
             ProcessFile(fileName, removeWords);
     }
 
+    /// <summary>
+    /// Processes the specified file to remove specified tags.
+    /// </summary>
+    /// <param name="fileName">The name of the file to process.</param>
+    /// <param name="removeWords">A list of tags to remove from the file.</param>
     static void ProcessFile(string fileName, List<string> removeWords)
     {
         var lines = File.ReadAllLines(fileName).ToList();

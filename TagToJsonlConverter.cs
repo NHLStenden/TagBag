@@ -1,10 +1,17 @@
-public static class TagToJsonlConverter
+namespace NhlStenden.TagBag;
+
+/// <summary>
+/// Represents a class that converts tag files to JSONL format.
+/// </summary>
+public class TagToJsonlConverter : TagBase
 {
+    /// <summary>
+    /// Executes the conversion process on the specified files.
+    /// </summary>
+    /// <param name="args">A list of arguments where the first argument is the directory path.</param>
     public static void Execute(IList<string> args)
     {
-        var fileNames = Directory.GetFiles(args[0], "*.txt", SearchOption.AllDirectories);
-        if (fileNames.Length == 0)
-            fileNames = Directory.GetFiles(args[0], "*.npz", SearchOption.AllDirectories);
+        var fileNames = GetTagFiles(args[0]);
         var lines = new List<String>();
         foreach (var fileName in fileNames)
         {
@@ -16,6 +23,11 @@ public static class TagToJsonlConverter
         File.WriteAllLines(Path.Join(args[0], "train.jsonl"), lines);
     }
 
+    /// <summary>
+    /// Processes the specified file to convert its content to JSONL format.
+    /// </summary>
+    /// <param name="fileName">The name of the file to process.</param>
+    /// <returns>A JSONL formatted string representing the file content.</returns>
     static string ProcessFile(string fileName)
     {
         var lines = File.ReadAllLines(fileName).ToList();
@@ -26,6 +38,11 @@ public static class TagToJsonlConverter
         return "{\"image\": \"" + imageFileName + "\", \"prompt\": \"" + line + "\"}";
     }
 
+    /// <summary>
+    /// Retrieves the corresponding image file name for the given text file name.
+    /// </summary>
+    /// <param name="textFileName">The name of the text file.</param>
+    /// <returns>The name of the corresponding image file, if found; otherwise, an empty string.</returns>
     static string GetImageFileName(string textFileName)
     {
         var baseTextFileName = Path.GetFileNameWithoutExtension(textFileName);

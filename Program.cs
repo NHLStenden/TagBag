@@ -1,4 +1,6 @@
-﻿static class Program
+﻿namespace NhlStenden.TagBag;
+
+static class Program
 {
     static void Main(string[] args)
     {

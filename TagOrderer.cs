@@ -1,22 +1,39 @@
-public static class TagOrderer
+namespace NhlStenden.TagBag;
+
+/// <summary>
+/// Represents a class that orders tags in files based on their frequency and position.
+/// </summary>
+public class TagOrderer : TagBase
 {
+    /// <summary>
+    /// Executes the tag ordering process on the specified files.
+    /// </summary>
+    /// <param name="args">A list of arguments where the first argument is the directory path.</param>
     public static void Execute(IList<string> args)
     {
-        var fileNames = Directory.GetFiles(args[0], "*.txt", SearchOption.AllDirectories);
-        if (fileNames.Length == 0)
-            fileNames = Directory.GetFiles(args[0], "*.npz", SearchOption.AllDirectories);
+        var fileNames = GetTagFiles(args[0]);
         var tokens = new Dictionary<string, (int Count, float Position)>();
         CountTagsInFiles(fileNames, tokens);
 
         Order(fileNames, tokens);
     }
 
+    /// <summary>
+    /// Counts the tags in the specified files and updates the token dictionary.
+    /// </summary>
+    /// <param name="fileNames">An array of file names to process.</param>
+    /// <param name="tokens">A dictionary to store the count and position of each tag.</param>
     static void CountTagsInFiles(string[] fileNames, Dictionary<string, (int Count, float Position)> tokens)
     {
         foreach (var fileName in fileNames)
             CountTagsInFile(fileName, tokens);
     }
 
+    /// <summary>
+    /// Counts the tags in the specified file and updates the token dictionary.
+    /// </summary>
+    /// <param name="fileName">The name of the file to process.</param>
+    /// <param name="tokens">A dictionary to store the count and position of each tag.</param>
     static void CountTagsInFile(string fileName, IDictionary<string, (int Count, float Position)> tokens)
     {
         var lines = File.ReadAllLines(fileName).ToList();
@@ -42,7 +59,13 @@ public static class TagOrderer
                 }
             }
         }
-    }    
+    }
+
+    /// <summary>
+    /// Orders the tags in the specified files based on their frequency and position.
+    /// </summary>
+    /// <param name="fileNames">An array of file names to process.</param>
+    /// <param name="tokens">A dictionary containing the count and position of each tag.</param>
     static void Order(string[] fileNames, Dictionary<string, (int Count, float Position)> tokens)
     {
         foreach (var fileName in fileNames)

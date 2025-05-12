@@ -7,7 +7,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/bin/Debug/net9.0/TagBag.dll",
-            "args": ["transform", "${workspaceFolder}/img", "huihui_ai/llama3.3-abliterated:latest", "${workspaceFolder}/Prompts/TagRefinement.txt"],
+            "args": ["transform", "${workspaceFolder}/img", "llama3.3:latest", "${workspaceFolder}/Prompts/TagRefinement.txt"],
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopAtEntry": false
