@@ -1,0 +1,1 @@
+Convert this SDXL style tag-based description to one or two full English sentence(s), and keep the words from the tags as much as possible. Only give the answer and nothing more:

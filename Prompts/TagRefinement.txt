@@ -1,0 +1,3 @@
+Given a comma-separated input list of descriptive tags for an image, refine the list by removing redundant or overly general terms, merging compatible specific descriptors, and prioritizing specialized attributes over more generic ones. Ensure that implied characteristics are eliminated when they are inherently included in more detailed descriptions. Output this optimized comma-separated list of tags and order the tags in a natural, image describing way. Only give this output and nothing more.
+
+The input list:
