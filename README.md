@@ -12,6 +12,7 @@ TagBag is a C# command-line tool for processing tag-based text files. It support
 
 ## Requirements
 - .NET SDK (.NET 9.0 or later)
+- Ollama (for the transform feature)
 
 # Contributing
 Contributions are welcome! Please fork the repository and submit pull requests.
