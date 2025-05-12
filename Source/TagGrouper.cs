@@ -12,7 +12,7 @@ public class TagGrouper : TagBase
     public static void Execute(IList<string> args)
     {
         var fileNames = GetTagFiles(args[0]);
-        var groups = args.Count >= 2 ? new List<string>(args.ToArray()[1..]) : new List<string>();
+        var groups = args.Count >= 2 ? [.. args.ToArray()[1..]] : new List<string>();
 
         foreach (var fileName in fileNames)
             ProcessFile(fileName, groups);

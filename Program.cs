@@ -1,7 +1,14 @@
 ﻿namespace NhlStenden.TagBag;
 
+/// <summary>
+/// Main program entry.
+/// </summary>
 static class Program
 {
+    /// <summary>
+    /// Main method.
+    /// </summary>
+    /// <param name="args">Arguments.</param>
     static void Main(string[] args)
     {
         if (args.Length < 2)
