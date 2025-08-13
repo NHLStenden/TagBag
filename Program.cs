@@ -15,13 +15,13 @@ static class Program
             return;
         var dictionary = new Dictionary<string, Action<IList<string>>>
         {
-            { "order-mean", TagOrderer.Execute },
             { "count", TagCounter.Execute },
             { "delete", TagDeleter.Execute },
             { "delete-doubles", DoubleTagDeleter.Execute },
             { "convert-to-jsonl", TagToJsonlConverter.Execute },
             { "group", TagGrouper.Execute },
-            { "transform", TagTransformer.Execute }
+            { "transform", TagTransformer.Execute },
+            { "analyze", TagAnalyzer.Execute }
         };
 
         var argsForExecutor = args.Where((x, i) => i != 0).ToList();

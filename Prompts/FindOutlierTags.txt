@@ -1,0 +1,1 @@
+Below are Stable Diffusion XL prompts, one per line. Each prompt is a comma-separated list of descriptive tags about the same dataset. Identify any tags that are inconsistent with the overall theme. For example, tags that are rare, unrelated, or stylistically mismatched compared to the rest. Only return a list of these tags and nothing more:

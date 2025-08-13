@@ -8,7 +8,8 @@ TagBag is a C# command-line tool for processing tag-based text files. It support
 - Delete specific tags or duplicates
 - Reorder tags using a mean-based method
 - Convert tags to JSONL format
-- Group or transform tags using custom strategies
+- Group or transform tags
+- Analyze tags
 
 ## Requirements
 - .NET SDK (.NET 9.0 or later)
