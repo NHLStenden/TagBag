@@ -1,6 +1,6 @@
 
 # TagBag
-TagBag is a C# command-line tool for processing tag-based text files. It supports various operations such as counting, deleting, reordering, transforming, grouping, and converting tag data — useful in annotation workflows and general-purpose tag management.
+TagBag is a Python command-line tool for processing tag-based text files. It supports various operations such as counting, deleting, reordering, transforming, grouping, and converting tag data — useful in annotation workflows and general-purpose tag management.
 
 ## Features
 - Works with .txt and .npz files
@@ -12,7 +12,7 @@ TagBag is a C# command-line tool for processing tag-based text files. It support
 - Analyze tags
 
 ## Requirements
-- .NET SDK (.NET 9.0 or later)
+- Python (3.12 or later)
 - Ollama (for the transform feature)
 
 # Contributing
