@@ -1,0 +1,13 @@
+[project]
+name = "tagbag"
+description = "TagBag is a Python command-line tool for processing tag-based text files."
+version = "1.0.0"
+readme = "README.md"
+license = {file = "LICENSE"}
+
+dependencies = [
+    "ollama"
+]
+    
+[project.urls]
+Repository = "https://github.com/NHLStenden/TagBag"
