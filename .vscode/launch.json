@@ -2,20 +2,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (console)",
-            "type": "coreclr",
+            "name": "Python Debugger",
+            "type": "debugpy",
             "request": "launch",
-            "preLaunchTask": "build",
-            "program": "${workspaceFolder}/bin/Debug/net9.0/TagBag.dll",
-            "args": ["transform", "${workspaceFolder}/img", "llama3.3:latest", "${workspaceFolder}/Prompts/TagRefinement.txt"],
-            "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
-            "stopAtEntry": false
-        },
-        {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach"
+            "program": "__main__.py",
+            "args": ["analyze", "${workspaceFolder}/img", "llama3.3:latest", "${workspaceFolder}/prompts/combine_tags.txt"],
+            "console": "integratedTerminal"
         }
     ]
 }
