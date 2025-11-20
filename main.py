@@ -9,6 +9,7 @@ from tagbag import (
     TagCounter,
     TagDeleter,
     TagGrouper,
+    TagOrderer,
     TagToJsonlConverter,
     TagTransformer,
 )
@@ -28,6 +29,7 @@ def main(argv: Sequence[str] | None = None) -> None:
         "count": TagCounter.execute,
         "delete": TagDeleter.execute,
         "delete-doubles": DoubleTagDeleter.execute,
+        "order-mean": TagOrderer.execute,
         "convert-to-jsonl": TagToJsonlConverter.execute,
         "group": TagGrouper.execute,
         "transform": TagTransformer.execute,

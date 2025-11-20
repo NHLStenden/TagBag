@@ -66,6 +66,16 @@ Arguments:
 python main.py delete-doubles data/
 ```
 
+#### order-mean
+Reorders tags inside each line using a global mean-based position score learned from all files.
+
+Arguments:
+1. Path to .txt or .npz files
+
+```bash
+python main.py order-mean data/
+```
+
 #### convert-to-jsonl
 Converts a dataset folder to JSONL with fields image and prompt.
 
