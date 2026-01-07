@@ -7,7 +7,7 @@ TagBag is a Python command-line tool for processing tag-based text files. It sup
 - Count tag frequency
 - Delete specific tags or duplicates
 - Reorder tags using a mean-based method
-- Convert tags to JSONL format
+- Convert tags to and from JSONL
 - Group or transform tags
 - Analyze tags
 
@@ -74,6 +74,16 @@ Arguments:
 
 ```bash
 python main.py order-mean data/
+```
+
+#### convert-from-jsonl
+Converts a JSONL file with image and prompt fields back into .txt tag files next to the images.
+
+Arguments:
+1. Path to a .jsonl file
+
+```bash
+python main.py convert-from-jsonl data/train.jsonl
 ```
 
 #### convert-to-jsonl

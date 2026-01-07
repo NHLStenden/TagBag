@@ -5,6 +5,7 @@ import argparse
 
 from tagbag import (
     DoubleTagDeleter,
+    JsonlToTagConverter,
     TagAnalyzer,
     TagCounter,
     TagDeleter,
@@ -30,6 +31,7 @@ def main(argv: Sequence[str] | None = None) -> None:
         "delete": TagDeleter.execute,
         "delete-doubles": DoubleTagDeleter.execute,
         "order-mean": TagOrderer.execute,
+        "convert-from-jsonl": JsonlToTagConverter.execute,
         "convert-to-jsonl": TagToJsonlConverter.execute,
         "group": TagGrouper.execute,
         "transform": TagTransformer.execute,
