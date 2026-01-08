@@ -20,3 +20,19 @@ class TagBase:
             return npz
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def get_image_files(path: str | Path) -> List[str]:
+        """
+        Recursively return image files under path.
+        """
+        p = Path(path)
+        try:
+            return [
+                str(f)
+                for f in p.rglob("*")
+                if f.suffix.lower() in { ".jpg", ".jpeg", ".png", ".webp", ".tiff", ".bmp",
+                }
+            ]
+        except FileNotFoundError:
+            return []

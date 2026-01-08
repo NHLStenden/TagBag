@@ -12,7 +12,8 @@ from tagbag import (
     TagGrouper,
     TagOrderer,
     TagToJsonlConverter,
-    TagTransformer,
+    TagTagger,
+    TagTransformer
 )
 
 def main(argv: Sequence[str] | None = None) -> None:
@@ -34,6 +35,7 @@ def main(argv: Sequence[str] | None = None) -> None:
         "convert-from-jsonl": JsonlToTagConverter.execute,
         "convert-to-jsonl": TagToJsonlConverter.execute,
         "group": TagGrouper.execute,
+        "tag": TagTagger.execute,
         "transform": TagTransformer.execute,
         "analyze": TagAnalyzer.execute,
     }

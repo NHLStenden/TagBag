@@ -9,11 +9,12 @@ TagBag is a Python command-line tool for processing tag-based text files. It sup
 - Reorder tags using a mean-based method
 - Convert tags to and from JSONL
 - Group or transform tags
+- Generate tags from images
 - Analyze tags
 
 ## Requirements
 - Python (3.12 or later)
-- Ollama (for the transform feature)
+- Ollama (for the tag and transform feature)
 
 ### Install
 ```bash
@@ -112,6 +113,18 @@ Arguments:
 ```bash
 # Example: treat these as the same group inside lines
 python main.py group data/ "car, auto, vehicle" "cat, kitten"
+```
+
+#### tag
+Generates tag files for images using a vision model. A .txt file is written next to each image. Requires Ollama.
+
+Arguments:
+1. Directory path of image files
+2. Ollama model name
+3. Prompt file name
+
+```bash
+python main.py tag data/ llava prompts/sdxl_tags.txt
 ```
 
 #### transform
