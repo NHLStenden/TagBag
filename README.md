@@ -1,6 +1,6 @@
 
 # TagBag
-TagBag is a Python command-line tool for processing tag-based text files. It supports various operations such as counting, deleting, reordering, transforming, grouping, and converting tag data — useful in annotation workflows and general-purpose tag management.
+TagBag is a Python command-line tool for processing tag-based data files. It supports various operations such as counting, deleting, reordering, tagging, transforming, grouping, and converting tag data — useful in annotation workflows and general-purpose tag management.
 
 ## Features
 - Works with .txt and .npz files
