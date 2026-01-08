@@ -124,7 +124,7 @@ Arguments:
 3. Prompt file name
 
 ```bash
-python main.py tag data/ llava prompts/sdxl_tags.txt
+python main.py tag data/ qwen3-vl prompts/sdxl_tags.txt
 ```
 
 #### transform
