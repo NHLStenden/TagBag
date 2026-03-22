@@ -10,7 +10,7 @@ TagBag is a Python command line tool for processing tag based data files. It sup
 - Convert tags to and from JSONL
 - Group or transform tags
 - Generate tags from images
-- Analyze tags
+- Analyze tags (and transform)
 
 ## Requirements
 - Python (3.12 or later)
@@ -150,6 +150,20 @@ Arguments:
 
 ```bash
 python main.py analyze data/ llama3.1 prompts/analysis.txt
+```
+
+#### analyze-transform
+
+First analyzes all tags across the files, then transforms each file using that shared analysis as additional context. Requires Ollama.
+
+Arguments:
+1. Directory path of .txt or .npz files
+2. Ollama model name
+3. Analysis prompt file name
+4. Transform prompt file name
+
+```bash
+python main.py analyze-transform data/ llama3.1 prompts/analysis.txt prompts/normalize.txt
 ```
 
 # Contributing

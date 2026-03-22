@@ -1,5 +1,6 @@
 from .double_tag_deleter import DoubleTagDeleter
 from .jsonl_to_tag_converter import JsonlToTagConverter
+from. tag_analyzer_transformer import TagAnalyzerTransformer
 from .tag_analyzer import TagAnalyzer
 from .tag_counter import TagCounter
 from .tag_deleter import TagDeleter
@@ -18,6 +19,7 @@ __all__ = [
     "TagOrderer",
     "TagToJsonlConverter",
     "TagAnalyzer",
+    "TagAnalyzerTransformer",
     "TagTagger",
     "TagTransformer"
 ]

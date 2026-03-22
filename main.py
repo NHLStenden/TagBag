@@ -7,6 +7,7 @@ from tagbag import (
     DoubleTagDeleter,
     JsonlToTagConverter,
     TagAnalyzer,
+    TagAnalyzerTransformer,
     TagCounter,
     TagDeleter,
     TagGrouper,
@@ -23,7 +24,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     First positional argument is the command. The remaining are forwarded to the handler.
     """
     parser = argparse.ArgumentParser(prog="tagbag", add_help=True)
-    parser.add_argument("command", help="count | delete | delete-doubles | convert-to-jsonl | group | transform | analyze")
+    parser.add_argument("command", help="count | delete | delete-doubles | convert-to-jsonl | group | transform | analyze | analyze-transform")
     parser.add_argument("args", nargs=argparse.REMAINDER, help="Arguments passed to the selected command")
     ns = parser.parse_args(argv)
 
@@ -38,6 +39,7 @@ def main(argv: Sequence[str] | None = None) -> None:
         "tag": TagTagger.execute,
         "transform": TagTransformer.execute,
         "analyze": TagAnalyzer.execute,
+        "analyze-transform": TagAnalyzerTransformer.execute,
     }
 
     action = dispatch.get(ns.command)
