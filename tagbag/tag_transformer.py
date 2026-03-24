@@ -33,8 +33,8 @@ class TagTransformer(TagBase):
     def _transform_file(file_path: Path, model: str, prompt_file_name: str) -> None:
         client = OllamaClient(model=model)
         try:
-            body = "\n".join(file_path.read_text(encoding="utf-8").splitlines())
-            prompt_prefix = Path(prompt_file_name).read_text(encoding="utf-8") if prompt_file_name else ""
+            body = "\n".join(file_path.read_text(encoding="utf-8", errors="ignore").splitlines())
+            prompt_prefix = Path(prompt_file_name).read_text(encoding="utf-8", errors="ignore") if prompt_file_name else ""
             prompt = f"{prompt_prefix}{body}"
             response_text = client.generate(prompt)
             if response_text:

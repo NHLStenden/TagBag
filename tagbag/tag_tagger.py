@@ -33,7 +33,7 @@ class TagTagger(TagBase):
     def _tag_file(file_path: Path, model: str, prompt_file_name: str) -> None:
         client = OllamaClient(model=model)
         try:
-            prompt_prefix = Path(prompt_file_name).read_text(encoding="utf-8") if prompt_file_name else ""
+            prompt_prefix = Path(prompt_file_name).read_text(encoding="utf-8", errors="ignore") if prompt_file_name else ""
             prompt = f"{prompt_prefix}\n{file_path}"
             response_text = client.generate(prompt)
             if response_text:

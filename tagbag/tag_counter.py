@@ -30,7 +30,7 @@ class TagCounter(TagBase):
 
     @staticmethod
     def _count_tags_in_file(file_path: Path, tokens: Dict[str, int]) -> None:
-        for line in file_path.read_text(encoding="utf-8").splitlines():
+        for line in file_path.read_text(encoding="utf-8", errors="ignore").splitlines():
             for item in TagHelper.split_into_tags(line):
                 tag = item.strip()
                 if not tag:

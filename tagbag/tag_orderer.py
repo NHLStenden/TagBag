@@ -31,7 +31,7 @@ class TagOrderer(TagBase):
 
     @staticmethod
     def _count_tags_in_file(file_path: Path, tokens: Dict[str, Tuple[int, float]]) -> None:
-        for line in file_path.read_text(encoding="utf-8").splitlines():
+        for line in file_path.read_text(encoding="utf-8", errors="ignore").splitlines():
             items = [t.strip() for t in TagHelper.split_into_tags(line) if t.strip()]
             n = len(items)
             if n == 0:
@@ -50,7 +50,7 @@ class TagOrderer(TagBase):
     def _order(file_names: Iterable[str], tokens: Dict[str, Tuple[int, float]]) -> None:
         for name in file_names:
             p = Path(name)
-            lines = p.read_text(encoding="utf-8").splitlines()
+            lines = p.read_text(encoding="utf-8", errors="ignore").splitlines()
             out_lines: List[str] = []
 
             for line in lines:

@@ -21,7 +21,7 @@ class JsonlToTagConverter(TagBase):
             raise ValueError(f"Not a file: {jsonl_path}")
 
         for line_number, line in enumerate(
-            jsonl_path.read_text(encoding="utf-8").splitlines(), start=1
+            jsonl_path.read_text(encoding="utf-8", errors="ignore").splitlines(), start=1
         ):
             line = line.strip()
             if not line:

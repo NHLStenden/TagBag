@@ -21,7 +21,7 @@ class TagDeleter(TagBase):
         remove_words_file = args[1] if len(args) >= 2 else ""
         remove_words: List[str] = []
         if remove_words_file:
-            remove_words = Path(remove_words_file).read_text(encoding="utf-8").splitlines()
+            remove_words = Path(remove_words_file).read_text(encoding="utf-8", errors="ignore").splitlines()
 
         file_names = TagBase.get_tag_files(dir_path)
         remove_set = {w.strip() for w in remove_words if w.strip()}
@@ -30,7 +30,7 @@ class TagDeleter(TagBase):
 
     @staticmethod
     def _process_file(file_path: Path, remove_words: Set[str]) -> None:
-        lines = file_path.read_text(encoding="utf-8").splitlines()
+        lines = file_path.read_text(encoding="utf-8", errors="ignore").splitlines()
         out_lines: List[str] = []
 
         for line in lines:

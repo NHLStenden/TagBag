@@ -39,14 +39,14 @@ class TagAnalyzer(TagBase):
     @staticmethod
     def _load_tags_from_files(file_names: Iterable[str], tokens: List[str]) -> None:
         for name in file_names:
-            tokens.extend(Path(name).read_text(encoding="utf-8").splitlines())
+            tokens.extend(Path(name).read_text(encoding="utf-8", errors="ignore").splitlines())
 
     @staticmethod
     def _analyze(content: List[str], model: str, prompt_file_name: str) -> str:
         client = OllamaClient(model=model)
         try:
             lines = "\n".join(content)
-            prompt_prefix = Path(prompt_file_name).read_text(encoding="utf-8") if prompt_file_name else ""
+            prompt_prefix = Path(prompt_file_name).read_text(encoding="utf-8", errors="ignore") if prompt_file_name else ""
             prompt = f"{prompt_prefix}{lines}"
             return client.generate(prompt)
         except FileNotFoundError:

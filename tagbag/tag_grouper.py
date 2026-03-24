@@ -30,7 +30,7 @@ class TagGrouper(TagBase):
 
     @staticmethod
     def _process_file(file_path: Path, groups: List[str]) -> None:
-        lines = file_path.read_text(encoding="utf-8").splitlines()
+        lines = file_path.read_text(encoding="utf-8", errors="ignore").splitlines()
         out_lines: List[str] = []
 
         for line in lines:

@@ -28,7 +28,7 @@ class TagToJsonlConverter(TagBase):
 
     @staticmethod
     def _process_file(file_path: Path) -> str:
-        content_lines = file_path.read_text(encoding="utf-8").splitlines()
+        content_lines = file_path.read_text(encoding="utf-8", errors="ignore").splitlines()
         if not content_lines:
             return ""
         image_file = TagToJsonlConverter._get_image_file_name(file_path)
