@@ -37,7 +37,7 @@ class TagTagger(TagBase):
             prompt = f"{prompt_prefix}\n{file_path}"
             response_text = client.generate(prompt)
             if response_text:
-                out_path = file_path.with_suffix(file_path.suffix + ".txt")
+                out_path = file_path.with_suffix(".txt")
                 out_path.write_text(response_text, encoding="utf-8")
         except FileNotFoundError:
             # Missing file or prompt file. Skip this path.
